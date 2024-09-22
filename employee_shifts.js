@@ -20,11 +20,6 @@ function displayEmployeeShifts(employee) {
 
 function assignShift(employeeName, day, hours) {
     const employee = employees.find(emp => emp.name === employeeName);
-    
-if (employee === undefined) {
-console.log(`Employee '${employeeName}' not found.`);
-return;
-    }
 const existingShift = employee.shifts.find(shift => shift.day === day);
     
 if (existingShift) {
@@ -35,4 +30,12 @@ console.log(`Shift assigned to ${employeeName} on ${day} for ${hours} hours.`);
     }
 };
 
-// Task 4: Create assignShift function
+// Task 4: Create a Function to Calculate Total Hours Worked
+
+function calculateTotalHours(employeeName) {
+const employee = employees.find(person => person.name === employeeName);
+    
+const totalHours = employee.shifts.reduce((total, shift) => total + shift.hours, 0);
+    console.log(`Total hours worked by ${employeeName}: ${totalHours}`);
+    return totalHours;
+};
